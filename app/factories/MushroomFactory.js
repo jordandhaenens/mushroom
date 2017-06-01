@@ -5,7 +5,7 @@ app.factory('MushroomFactory',function($q, $http){
 	let getShrooms = function(){
 		console.log("getShrooms is firing");
 		return $q(function(resolve, reject){
-			$http.get('#')
+			$http.get('https://mushrooms-fe819.firebaseio.com/.json')
 			.then(function(itemData){
 				// console.log("itemData", itemData);
 				let data = itemData.data;

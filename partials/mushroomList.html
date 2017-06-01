@@ -1,17 +1,27 @@
 <div>
 	<header><h1>Miracles of Fungi</h1></header>
 	<div>
+
 		<input type="radio" name="Edibles" ng-model="eatOrNot" value="true"> Edibles
 		<input type="radio" name="Death" ng-model="eatOrNot" value="false"> Death
-		<input type="radio" name="showAll" ng-model="showAll" value="crisp"> Show All <!--Why does this stay selected once clicked?--> Mushrooms
+		<input type="checkbox" name="showAll" ng-model="showAll"> Show All <!--Why does this stay selected once clicked?--> Mushrooms
 		<hr><input type="text" name="search" ng-model="query" placeholder="search for 'shrooms">
 	</div>
 
 	<section>
-		<div ng-repeat="item in mushrooms | filter: {edible: eatOrNot} | filter: query | filter: {description: showAll}">
+		<div ng-repeat="item in mushrooms | filter: {edible: eatOrNot} | filter: query" ng-if="!showAll" >
 			<hr>
 			<h3>{{item.name}}</h3>
 			<p>{{item.description}}</p>
+			<!-- <p>Should I eat this?</p> --><!--How do I add an 'if' statement here?-->
+
+		</div>
+		<div ng-if="showAll"  >
+			<div ng-repeat="item in mushrooms">
+				<hr>
+				<h3>{{item.name}}</h3>
+				<p>{{item.description}}</p>
+			</div>
 			<!-- <p>Should I eat this?</p> --><!--How do I add an 'if' statement here?-->
 
 		</div>
