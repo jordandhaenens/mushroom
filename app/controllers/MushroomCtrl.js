@@ -3,6 +3,9 @@ console.log("MushroomCtrl.js is loaded");
 
 
 app.controller('ShroomCtrl', function($scope, MushroomFactory){
+	$scope.tellVal = function(){
+		console.log($scope.eatOrNot);
+	}
 	MushroomFactory.getShrooms()
 	.then(function(data){
 		let array = [];
